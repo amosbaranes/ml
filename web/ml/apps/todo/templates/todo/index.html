@@ -1,0 +1,36 @@
+{% extends "base_todo.html" %}
+
+{% block sub_app_toolbar %}
+    <li class="nav-item">
+      <a class="nav-link" href="#">Todo1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Todo2</a>
+    </li>
+{% endblock sub_app_toolbar %}
+
+{% block body %}
+<div class="text-center">
+  <br>
+  <img src="http://media.django.es.s3.amazonaws.com/nuevo/images/djangopony.png">
+  <br>
+    <p>This page has been viewed <strong><u>{{x}}</u></strong> times!</p>
+</div>
+<br>
+<form action="" method="POST">
+  {% csrf_token %}
+  <div class="form-group">
+    <input name="item_text" class="form-control input-lg" type="text" placeholder="Enter a message" required>
+  </div>
+  <input type="submit" class="btn btn-success btn-lg btn-block" value="Submit">
+</form>
+
+<div>
+  {% for item in items %}
+    <h4 class="well"><b>
+        {{item.text}}</b> - <em>
+        {{item.date_posted}}</em>
+    </h4>
+  {% endfor %}
+</div>
+{% endblock body %}
