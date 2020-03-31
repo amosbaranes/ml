@@ -7,14 +7,11 @@
 {% endblock app_toolbar %}
 
 {% block sub_app_toolbar %}
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'introml:ch01' %}">CH01</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'introml:ch02' %}">CH02</a>
+    <li>
+        <select id="cars" class="show_content">
+          <option value="na">---------</option>
+          <option id="get_data" value="get_data" page="get_data" chapter="2">Get Data</option>
+          <option id="get_data1" value="get_data1" page="get_data" chapter="2">Get Data1</option>
+        </select>
     </li>
 {% endblock sub_app_toolbar %}
-
-{% block body %}
-<h1>{{title}}</h1>
-{% endblock body %}

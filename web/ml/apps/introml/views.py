@@ -34,21 +34,28 @@ def index(request):
     return render(request, 'introml/index.html', {'x': 500})
 
 
+# Main Navigator ---
 def show_content(request):
-    page=request.POST.get('page')
     chapter=request.POST.get('chapter')
+    page=request.POST.get('page')
+    # the variable chapters send me to the right chapter function --
+    # the variable page send me to the right section in the function function (see below) --
+    # --- chapter 1 --
     if str(chapter) == '1':
         return chapter_1(request, page)
     # if str(chapter) == '1_1':
     #     return chapter_1_1(request, page)
+    # --- chapter 2 --
     elif str(chapter) == '2':
         return chapter_2(request, page)
     elif str(chapter) == '2_1':
         return chapter_2_1(request, page)
     elif str(chapter) == '2_2':
         return chapter_2_2(request, page)
+    # --- chapter 3 --
 
 
+#  -- Every Chapter has it own code --
 # -------------------------------------------------------------------
 def ch01(request):
     title = 'The Machine Learning Landscape'
@@ -59,6 +66,7 @@ def chapter_1(request, page):
     algo = Algo1()
     title = 'GDP/C vs Life satisfaction'
     if page == "plot_gdp_pc_vs_life_satisfaction":
+        title = 'GDP/C vs Life satisfaction'
         algo.sample_data.plot(kind='scatter', x="GDP per capita", y='Life satisfaction')
         fig_id = "plot_gdp_pc_vs_life_satisfaction"
         algo.save_fig(fig_id)
@@ -74,10 +82,13 @@ def chapter_1(request, page):
         model.fit(X, y)
         # Make a prediction for Cyprus
         X_new = [[22587]]  # Cyprus' GDP per capita
-        print('')
-        print(title)
         print('-'*10)
-        print(model.predict(X_new))  # outputs [[ 5.96242338]]
+        print(title)
+        print('--')
+        print('X_new = ' + str(X_new))
+        print('-'*10)
+        y = model.predict(X_new)
+        print('output:  y = ' + str(y))  # outputs [[ 5.96242338]]
         print('-'*10)
         return render(request, 'introml/_data_processed_successfully.html', {'title': title})
     elif page == "several_countries_on_plot":
@@ -138,6 +149,13 @@ def chapter_1(request, page):
         fig_id2 = 'regression_line'
         algo.save_fig(fig_id2)
         fig_name_id2 = 'Regression Line'
+        return render(request, 'introml/ch01/_tweaking_model_params_plot.html',
+                      {'title': title,
+                       'fig_id1': fig_id1, 'fig_name_id1': fig_name_id1,
+                       'fig_id2': fig_id2, 'fig_name_id2': fig_name_id2,
+                       'chapter_id': algo.CHAPTER_ID, 'img_type': 'png'})
+    elif page == "tweaking_model_params_plot":
+        title = 'GDP/C vs Life satisfaction (diff params)'
         return render(request, 'introml/ch01/_tweaking_model_params_plot.html',
                       {'title': title,
                        'fig_id1': fig_id1, 'fig_name_id1': fig_name_id1,

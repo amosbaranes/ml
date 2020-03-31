@@ -2,10 +2,11 @@
 {% static "" as base_static %}
 
 <div class="text-center">
-    <h4>{{title}}</h4>
-    {{fig_name_id1}}<br/>
-   <img src="{{ base_static }}introml/data/images/{{chapter_id}}/{{fig_id1}}.{{img_type}}" %}" width="900" height="450" />
-    {{fig_name_id2}}<br/>
-   <img src="{{ base_static }}introml/data/images/{{chapter_id}}/{{fig_id2}}.{{img_type}}" %}" width="900" height="450" />
+    <h4>{{title}}</h4><br/>
+    <h3>{{fig_name_id1}}
+    <img src="{{ base_static }}introml/data/images/{{chapter_id}}/{{fig_id1}}.{{img_type}}" %}" width="900" height="450" />
+    <br/><br/>
+        <h3>{{fig_name_id2}}</h3>
+    <img src="{{ base_static }}introml/data/images/{{chapter_id}}/{{fig_id2}}.{{img_type}}" %}" width="900" height="450" />
   <br>
 </div>
