@@ -3,7 +3,7 @@ pandas==1.0.3
 Pillow==7.0.0
 python-dateutil==2.7.3
 pytz==2018.5
-PyYAML==3.13
+PyYAML==5.4
 redis==2.10.5
 requests==2.21.0
 scikit-image==0.16.2
