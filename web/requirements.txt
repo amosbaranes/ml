@@ -1,4 +1,4 @@
-Django==2.1.10
+Django==2.2.24
 pandas==1.0.3
 Pillow==7.0.0
 python-dateutil==2.7.3
